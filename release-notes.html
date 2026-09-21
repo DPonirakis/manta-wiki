@@ -1,0 +1,26 @@
+﻿<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Release Notes — MANTA Wiki Recovered Archive</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="bb-topbar"><div class="bb-product">Bitbucket</div><div class="bb-breadcrumb"><span>CLO-BRP</span><b>/</b><span>manta-wiki</span><b>/</b><span>wiki</span><b>/</b><strong>MANTA Release Notes</strong></div><div class="bb-archive-tag">GitHub mirror</div></header><div class="layout"><aside class="sidebar"><div class="brand">manta-wiki</div><div class="subbrand">Wiki pages</div><nav><a href="index.html" class="">Home</a><a href="manta-software.html" class="">MANTA Software</a><a href="downloads-installation.html" class="">Downloads &amp; Installation</a><a href="release-notes.html" class="active">Release Notes</a><a href="data-sets.html" class="">Data Sets for Testing</a><a href="sound-parser.html" class="">Sound Name Parser</a><a href="references.html" class="">References</a><a href="archive-status.html" class="">Archive Status</a></nav></aside>
+<main class="content"><article class="paper"><div class="archive-banner"><span class="badge">RECOVERED</span> Preserved from the original CLO-BRP MANTA Bitbucket wiki. Media and software links shown as local are served from this archive; external references still open on the web.</div>
+<h1><strong>MANTA Release Notes</strong></h1>
+<p><img src="wiki-images/3175615496-MantaBanner%20Bundled%20with%20Raven%20X%20Toolbox%20png.png" alt="MantaBanner Bundled with Raven X Toolbox png.png" /></p>
+<h1>V9.6.9</h1>
+<ul>
+<li>Added zero-time start to index-time manager in Raven-X. Several attempts resulted in various issues.  Raven-X handles both duty cycle and continuous datasets, indexing need to generate the same result. <a href="https://bitbucket.org/CLO-BRP/manta-wiki/issues/90/duty-cycle-and-continuous-modes-test-to">Brief explanation on duty cycle and continuous indexing</a>.</li>
+</ul>
+<p>Two types of issues resulted:</p>
+<ol>
+<li><a href="https://bitbucket.org/CLO-BRP/manta-wiki/issues/91/handling-intervals-dived-by-a-time-gap">Wrong indexing</a></li>
+<li>Data Loss.</li>
+</ol>
+<p>Indexing errors usually happen around hour, day or gap boundaries.  Hour and day boundaries are the transition from one time period to the next, however gap boundaries are generally caused by time-gaps between file time-stamps.  Some audio formats, such as NAVY and Seismic Community, store timestamps as digital values which help to guarantee accurate values.  The ACTUAL sample rate is also saved, often this is not a whole number, but consists of a small fraction due to drift etc.  Using a fixed sample-rate and time stamps in the filename, contributes to gaps between audio files and Raven-X treats these as a short duty cycle event <a href="https://bitbucket.org/CLO-BRP/manta-wiki/issues/89/resolving-gaps-between-time-pages-for-zero">Raven-X treats these as a short duty cycle event</a>.</p>
+<p>Raven-X concatenates the sounds from file to file and should have a continuous stream.  Due to factors previously explained, gaps form <a href="https://bitbucket.org/CLO-BRP/manta-wiki/issues/88/gaps-in-the-sound-stream">and raven-x detects and handles and the spaces</a>, but in many cases, a time period will be divided into smaller intervals, where the gap is only 1-2 seconds.  This forms a disruption in the minute long time slices, and a new feature was added to MANTA that merges the two sub-intervals into a single interval with the appropriate time span.</p>
+<p>New testing is introduced to help find issues, v9.6.9</p>
+<ul>
+<li>test methods were created to &quot;speed test&quot; time indexing</li>
+<li><a href="https://bitbucket.org/CLO-BRP/manta-wiki/issues/100/methodology-to-test-large-datasets-for">naming methodology if errors are found in the future</a></li>
+</ul>
+<p>successfully ran many large datasets <a href="https://bitbucket.org/CLO-BRP/manta-wiki/issues/101/testing-useable-audio-v968-raven-x-time">Dataset Examples</a> and introduced a coverage test</p>
+<p>however type-2 (data loss) likely resulting from indexing into out of bound memory.</p>
+<div class="footer">Generated from the recovered <code>manta-wiki</code> Git snapshot. The original Git history remains unchanged in your backup repository.</div></article></main></div></body></html>
