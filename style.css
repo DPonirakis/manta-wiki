@@ -1,4 +1,4 @@
-:root{
+﻿:root{
   --bb-blue:#0052cc;
   --bb-blue-dark:#0747a6;
   --bb-link:#0052cc;
@@ -22,7 +22,7 @@ body{
 a{color:var(--bb-link);text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* Bitbucket-like top navigation */
+/* MANTA Wiki top navigation */
 .bb-topbar{
   height:48px;
   background:var(--bb-blue-dark);
@@ -170,3 +170,4 @@ ul.tight li{margin:3px 0}
   .bb-breadcrumb{display:none}
   .bb-topbar{position:relative}
 }
+
