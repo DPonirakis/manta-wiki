@@ -1,4 +1,4 @@
-﻿:root{
+:root{
   --bb-blue:#0052cc;
   --bb-blue-dark:#0747a6;
   --bb-link:#0052cc;
@@ -172,3 +172,28 @@ ul.tight li{margin:3px 0}
 }
 
 
+
+.bb-product,
+.bb-center-link,
+.bb-archive-tag {
+  color:#fff;
+  text-decoration:none;
+}
+
+.bb-product:hover,
+.bb-center-link:hover,
+.bb-archive-tag:hover {
+  color:#fff;
+  text-decoration:none;
+}
+
+.bb-center-link {
+  font-size:14px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+@media(max-width:900px){
+  .bb-center-link{display:none}
+}
